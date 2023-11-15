@@ -81,7 +81,8 @@ namespace Full_GRASP_And_SOLID
             return totalTime;
         }
 
-
+        // ACA ESTOY USANDO UNA INNER CLASS PARA PODER ACCEDER A LA "Recipe.Cooked"
+        //Estoy utilizando el patrón "Adapter"
         public class RecipeAdapter : TimerClient
         {
             Recipe recipe;
