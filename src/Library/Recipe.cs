@@ -65,7 +65,8 @@ namespace Full_GRASP_And_SOLID
 
         public void Cook()
         {
-            
+            CountdownTimer timer = new CountdownTimer();
+            timer.Register(GetCookTime(), new RecipeAdapter(this));
         }
 
         public int GetCookTime()
@@ -78,6 +79,20 @@ namespace Full_GRASP_And_SOLID
             }
 
             return totalTime;
+        }
+
+
+        public class RecipeAdapter : TimerClient
+        {
+            Recipe recipe;
+            public RecipeAdapter(Recipe recipe)
+            {
+                this.recipe = recipe;
+            }
+            public void TimeOut()
+            {
+                recipe.Cooked = true;
+            }
         }
     }
 }
